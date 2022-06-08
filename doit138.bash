@@ -48,7 +48,7 @@ cp --archive ../../SorTn-seq/example_dataset/GCF_002847015.1_ASM284701v1_genomic
 (
     set -x
     Rscript --version
-    Rscript SorTnSeq_format_features.R
+    Rscript --vanilla SorTnSeq_format_features.R
 )
 
 
@@ -71,7 +71,7 @@ unpigz bam/*.gz
 
 (
     set -x
-    Rscript SorTnSeq_insertion_counts.R
+    Rscript --vanilla SorTnSeq_insertion_counts.R
 )
 
 # ------------------------------------------------------------------------
@@ -89,7 +89,7 @@ unpigz bam/*.gz
 
 (
     set -x
-    Rscript SorTnSeq_analysis.R
+    Rscript --vanilla SorTnSeq_analysis.R
 )
 # ------------------------------------------------------------------------
 # Done.
