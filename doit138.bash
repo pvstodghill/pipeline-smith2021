@@ -29,7 +29,8 @@ cd ${SORTNSEQ}/
 set +x
 
 # Stage the data
-cp --archive ../../test/xGCF_002847015.1_ASM284701v1_genomic.gff .
+cp --archive ../../local/annotation.gff fixme_genomic.gff
+mkdir bam
 cp --archive ../../test/xsample_metadata.xlsx .
 cp --archive ../../test/xbam .
 unpigz xbam/*.gz
@@ -55,7 +56,7 @@ unpigz xbam/*.gz
 (
     set -x
     Rscript --vanilla ../../SorTn-seq/SorTnSeq_format_features.R \
-	    xGCF_002847015.1_ASM284701v1
+	    fixme
 )
 
 # ------------------------------------------------------------------------
@@ -73,7 +74,7 @@ unpigz xbam/*.gz
 (
     set -x
     Rscript --vanilla ../../SorTn-seq/SorTnSeq_insertion_counts.R \
-	    xGCF_002847015.1_ASM284701v1 xsample_metadata.xlsx xbam
+	    fixme ../../local/fixme.tsv ../beds
 )
 
 # ------------------------------------------------------------------------
@@ -92,7 +93,7 @@ unpigz xbam/*.gz
 (
     set -x
     Rscript --vanilla ../../SorTn-seq/SorTnSeq_analysis.R \
-	    xGCF_002847015.1_ASM284701v1
+	    fixme
 )
 # ------------------------------------------------------------------------
 # Done.
