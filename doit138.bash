@@ -25,8 +25,6 @@ echo 1>&2 "# Run SorTnSeq"
 rm -rf ${SORTNSEQ}
 mkdir -p ${SORTNSEQ}
 
-cp --archive SorTn-seq/*.R ${SORTNSEQ}/
-
 set -x
 cd ${SORTNSEQ}/
 set +x
@@ -48,7 +46,7 @@ cp --archive ../../SorTn-seq/example_dataset/GCF_002847015.1_ASM284701v1_genomic
 (
     set -x
     Rscript --version
-    Rscript --vanilla SorTnSeq_format_features.R
+    Rscript --vanilla ../../SorTn-seq/SorTnSeq_format_features.R
 )
 
 
@@ -71,7 +69,7 @@ unpigz bam/*.gz
 
 (
     set -x
-    Rscript --vanilla SorTnSeq_insertion_counts.R
+    Rscript --vanilla ../../SorTn-seq/SorTnSeq_insertion_counts.R
 )
 
 # ------------------------------------------------------------------------
@@ -89,7 +87,7 @@ unpigz bam/*.gz
 
 (
     set -x
-    Rscript --vanilla SorTnSeq_analysis.R
+    Rscript --vanilla ../../SorTn-seq/SorTnSeq_analysis.R
 )
 # ------------------------------------------------------------------------
 # Done.
