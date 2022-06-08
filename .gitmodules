@@ -1,9 +1,12 @@
 [submodule "stubs"]
 	path = stubs
-	url = git@github.com:pvstodghill/stubs.git
+	url = ../stubs.git
 [submodule "scripts"]
 	path = scripts
-	url = git@github.com:pvstodghill/scripts.git
+	url = ../scripts.git
 [submodule "howto"]
 	path = howto
-	url = git@github.com:pvstodghill/howto.git
+	url = ../howto.git
+[submodule "SorTn-seq"]
+	path = SorTn-seq
+	url = ../SorTn-seq.git
