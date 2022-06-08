@@ -1,0 +1,48 @@
+---
+environment: pvs__bedtools
+packages: bedtools
+commands:
+  - bedtools
+
+---
+environment: pvs__biotradis
+packages: biotradis
+commands:
+  - bacteria_tradis
+
+---
+environment: pvs__fastqc
+packages: fastqc
+commands:
+  - fastqc
+
+---
+environment: pvs__sra-tools
+packages: sra-tools
+commands:
+  - fasterq-dump
+
+---
+environment: pvs__trimmomatic
+packages: trimmomatic
+commands:
+  - trimmomatic
+
+
+---
+environment: smith2021_works
+packages: >
+  r-base r-tidyverse r-readxl r-writexl r-scales r-ggrepel r-ggiraph
+  bioconductor-edger=3.32.1
+commands:
+  - Rscript
+
+---
+environment: smith2021_broken
+packages: >
+  r-base r-tidyverse r-readxl r-writexl r-scales r-ggrepel r-ggiraph
+  bioconductor-edger
+commands:
+  - Rscriptx
+
+  
