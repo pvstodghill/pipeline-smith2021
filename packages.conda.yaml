@@ -28,21 +28,12 @@ packages: trimmomatic
 commands:
   - trimmomatic
 
-
 ---
-environment: smith2021_works
+environment: smith2021
 packages: >
-  r-base r-tidyverse r-readxl r-writexl r-scales r-ggrepel r-ggiraph
+  r-base r-optparse
+  r-tidyverse r-readxl r-writexl r-scales r-ggrepel r-ggiraph
   bioconductor-edger=3.32.1
 commands:
+  - R
   - Rscript
-
----
-environment: smith2021_broken
-packages: >
-  r-base r-tidyverse r-readxl r-writexl r-scales r-ggrepel r-ggiraph
-  bioconductor-edger
-commands:
-  - Rscriptx
-
-  

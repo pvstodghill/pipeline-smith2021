@@ -18,7 +18,6 @@ else
 fi
 
 # ------------------------------------------------------------------------
-# ------------------------------------------------------------------------
 
 echo 1>&2 "# Run SorTnSeq"
 
@@ -29,6 +28,17 @@ set -x
 cd ${SORTNSEQ}/
 set +x
 
+# Stage the data
+cp --archive ../../test/xGCF_002847015.1_ASM284701v1_genomic.gff .
+cp --archive ../../test/xsample_metadata.xlsx .
+cp --archive ../../test/xbam .
+unpigz xbam/*.gz
+
+# Print the R version
+(
+    set -x
+    Rscript --version
+)
 # ------------------------------------------------------------------------
 # 
 # 138. Obtain the RefSeq .gff file for the organism of interest and
@@ -42,14 +52,11 @@ set +x
 # 
 # ------------------------------------------------------------------------
 
-cp --archive ../../SorTn-seq/example_dataset/GCF_002847015.1_ASM284701v1_genomic.gff .
 (
     set -x
-    Rscript --version
-    Rscript --vanilla ../../SorTn-seq/SorTnSeq_format_features.R
+    Rscript --vanilla ../../SorTn-seq/SorTnSeq_format_features.R \
+	    xGCF_002847015.1_ASM284701v1
 )
-
-
 
 # ------------------------------------------------------------------------
 # 
@@ -63,13 +70,10 @@ cp --archive ../../SorTn-seq/example_dataset/GCF_002847015.1_ASM284701v1_genomic
 # 
 # ------------------------------------------------------------------------
 
-cp --archive ../../SorTn-seq/example_dataset/sample_metadata.xlsx .
-cp --archive ../../SorTn-seq/example_dataset/bam .
-unpigz bam/*.gz
-
 (
     set -x
-    Rscript --vanilla ../../SorTn-seq/SorTnSeq_insertion_counts.R
+    Rscript --vanilla ../../SorTn-seq/SorTnSeq_insertion_counts.R \
+	    xGCF_002847015.1_ASM284701v1 xsample_metadata.xlsx xbam
 )
 
 # ------------------------------------------------------------------------
@@ -87,7 +91,8 @@ unpigz bam/*.gz
 
 (
     set -x
-    Rscript --vanilla ../../SorTn-seq/SorTnSeq_analysis.R
+    Rscript --vanilla ../../SorTn-seq/SorTnSeq_analysis.R \
+	    xGCF_002847015.1_ASM284701v1
 )
 # ------------------------------------------------------------------------
 # Done.
