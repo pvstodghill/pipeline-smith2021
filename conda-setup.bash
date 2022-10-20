@@ -6,16 +6,32 @@ CONDA_PREFIX=$(dirname $(dirname $(type -p conda)))
 . "${CONDA_PREFIX}/etc/profile.d/conda.sh"
 
 PACKAGES=
-PACKAGES+=" pip"
+#PACKAGES+=" pip"
 
-PACKAGES+=" FIXME"
+PACKAGES+=" bedtools"
+PACKAGES+=" bioconductor-edger=3.32.1"
+PACKAGES+=" biotradis"
+PACKAGES+=" fastqc"
+PACKAGES+=" r-base"
+PACKAGES+=" r-ggiraph"
+PACKAGES+=" r-ggrepel"
+PACKAGES+=" r-optparse"
+PACKAGES+=" r-readxl"
+PACKAGES+=" r-scales"
+PACKAGES+=" r-tidyverse"
+PACKAGES+=" r-writexl"
+PACKAGES+=" sra-tools"
+PACKAGES+=" trimmomatic"
+
+#_conda=conda
+_conda=mamba
 
 set -x
 
-conda env remove -y --name pipeline-FIXME
-conda create -y --name pipeline-FIXME
-conda activate pipeline-FIXME
+conda env remove -y --name pipeline-smith2021
+conda create -y --name pipeline-smith2021
+conda activate pipeline-smith2021
 
-conda install -y ${PACKAGES}
+$_conda install -y ${PACKAGES}
 
-pip install FIXME
+#pip install FIXME

@@ -19,7 +19,7 @@ PACKAGES_FROM=howto
 
 # # Uncomment to use conda
 # PACKAGES_FROM=conda
-# CONDA_ENV=pipeline-FIXME
+# CONDA_ENV=pipeline-smith2021
 
 #THREADS=$(nproc --all)
 
