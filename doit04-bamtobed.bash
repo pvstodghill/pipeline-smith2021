@@ -22,7 +22,8 @@ rm -rf ${BEDS}
 mkdir -p ${BEDS}
 
 for bam_file in ${TRADIS}/*.bam; do
-    bed_file=${BEDS}/${bam_file}.bed # yuck.
+    name=$(basename ${bam_file}) # yuck.
+    bed_file=${BEDS}/${name}.bed
     (
 	set -x
 	bedtools bamtobed -i $bam_file > $bed_file
