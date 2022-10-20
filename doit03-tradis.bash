@@ -17,10 +17,8 @@ mkdir -p ${TRADIS}
 #     dir *.fastq.gz >filelist.txt
 # ------------------------------------------------------------------------
 
-(
-    cd ${TRADIS}
-    ls ../../local/*.fastq.gz > filelist.txt
-)
+realpath --relative-to=${TRADIS} ${FASTQ_FILES} \
+	  > ${TRADIS}/filelist.txt
 
 # ------------------------------------------------------------------------
 # 

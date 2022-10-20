@@ -21,7 +21,7 @@ echo 1>&2 "# Trim the reads"
 rm -rf ${TRIMMED}
 mkdir -p ${TRIMMED}
 
-for input_fq in ${SRA}/*.fastq.gz ; do
+for input_fq in ${FASTQ_FILES} ; do
     output_fq=${TRIMMED}/$(basename $input_fq)
     trim_summary=${TRIMMED}/$(basename $input_fq .fastq.gz).txt
     (
