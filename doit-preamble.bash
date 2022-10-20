@@ -92,8 +92,8 @@ export LC_ALL=C
 
 # ------------------------------------------------------------------------
 
-FASTQC=data/fastqc
-TRIMMED=data/trimmed
-TRADIS=data/tradis
-BEDS=data/beds
-SORTNSEQ=data/sortnseq
+FASTQC=${DATA}/fastqc
+TRIMMED=${DATA}/trimmed
+TRADIS=${DATA}/tradis
+BEDS=${DATA}/beds
+SORTNSEQ=${DATA}/sortnseq
