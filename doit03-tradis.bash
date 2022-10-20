@@ -30,6 +30,8 @@ realpath --relative-to=${TRADIS} ${FASTQ_FILES} \
 # 
 # ------------------------------------------------------------------------
 
+cp --archive ${GENOME_FNA} ${TRADIS}/genome.fna
+
 (
     set -x
     cd ${TRADIS}
@@ -43,7 +45,7 @@ realpath --relative-to=${TRADIS} ${FASTQ_FILES} \
 	-v \
 	-f filelist.txt \
 	-t TATAAGAGACAG \
-	-r ../../local/genome.fna
+	-r genome.fna
 )
 
 # ------------------------------------------------------------------------
