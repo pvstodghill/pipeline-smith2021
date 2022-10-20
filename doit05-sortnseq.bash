@@ -9,22 +9,31 @@ echo 1>&2 "# Run SorTnSeq"
 rm -rf ${SORTNSEQ}
 mkdir -p ${SORTNSEQ}
 
+PREFIX=bacteria
+PIPELINE=$(realpath --relative-to ${SORTNSEQ} ${PIPELINE})
+
+# ------------------------------------------------------------------------
+
+# Stage the data
+cp --archive ${GENOME_GFF} ${SORTNSEQ}/${PREFIX}_genomic.gff
+#cp --archive .../sample_metadata.xlsx .
+cp --archive ${BEDS} ${SORTNSEQ}/beds
+cp ${SAMPLES_TSV} ${SORTNSEQ}/samples.tsv
+
+# ------------------------------------------------------------------------
+
 set -x
 cd ${SORTNSEQ}/
 set +x
 
-# Stage the data
-cp --archive ../../local/annotation.gff fixme_genomic.gff
-cp --archive ../../local/sample_metadata.xlsx .
-cp --archive ../../${BEDS} beds
-cp ../../local/fixme.tsv .
-#unpigz xbam/*.gz
+# ------------------------------------------------------------------------
 
 # Print the R version
 (
     set -x
     Rscript --version
 )
+
 # ------------------------------------------------------------------------
 # 
 # 138. Obtain the RefSeq .gff file for the organism of interest and
@@ -33,15 +42,15 @@ cp ../../local/fixme.tsv .
 # 
 # 
 # 139. Run SorTnSeq_format_features.R to generate a new feature table
-# ('[genome.prefix]_feature- s_sortnseq.xlsx') that specifies
+# ('[genome.prefix]_features_sortnseq.xlsx') that specifies
 # intergenic regions as well as RefSeq features.
 # 
 # ------------------------------------------------------------------------
 
 (
     set -x
-    Rscript --vanilla ../../SorTn-seq/SorTnSeq_format_features.R \
-	    fixme
+    Rscript --vanilla ${PIPELINE}/SorTn-seq/SorTnSeq_format_features.R \
+	    ${PREFIX}
 )
 
 # ------------------------------------------------------------------------
@@ -58,8 +67,8 @@ cp ../../local/fixme.tsv .
 
 (
     set -x
-    Rscript --vanilla ../../SorTn-seq/SorTnSeq_insertion_counts.R \
-	    fixme fixme.tsv beds
+    Rscript --vanilla ${PIPELINE}/SorTn-seq/SorTnSeq_insertion_counts.R \
+	    ${PREFIX} samples.tsv beds
 )
 
 # ------------------------------------------------------------------------
@@ -77,8 +86,8 @@ cp ../../local/fixme.tsv .
 
 (
     set -x
-    Rscript --vanilla ../../SorTn-seq/SorTnSeq_analysis.R \
-	    fixme
+    Rscript --vanilla ${PIPELINE}/SorTn-seq/SorTnSeq_analysis.R \
+	    ${PREFIX}
 )
 # ------------------------------------------------------------------------
 # Done.

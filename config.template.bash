@@ -8,9 +8,13 @@
 
 # Raw-read files
 FASTQ_FILES=local/*.fastq.gz
+# Meta-data for read files 
+SAMPLES_TSV=local/samples.tsv
 
-# The genome sequence
+# The genome sequence ...
 GENOME_FNA=local/genome.fna
+# ... and annotation
+GENOME_GFF=local/genome.gff
 
 # ------------------------------------------------------------------------
 
