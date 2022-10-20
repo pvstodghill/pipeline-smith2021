@@ -1,5 +1,13 @@
 #! /bin/bash
 
+# Raw-read files
+FASTQ_FILES=local/*.fastq.gz
+
+# The genome sequence
+GENOME_FNA=local/genome.fna
+
+
+
 # ------------------------------------------------------------------------
 
 if [ -e ${HOME}/miniconda3/condabin/conda ] ; then
