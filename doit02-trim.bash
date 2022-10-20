@@ -1,21 +1,6 @@
 #! /bin/bash
 
-# option (a)
-
 . doit-preamble.bash
-
-# option (b)
-
-set -e
-set -o pipefail
-
-export LC_ALL=C
-
-if [ -e /programs/docker/bin/docker1 ] ; then
-    THREADS=32
-else
-    THREADS=$(nproc --all)
-fi
 
 # ------------------------------------------------------------------------
 # 
