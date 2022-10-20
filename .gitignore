@@ -4,7 +4,7 @@
 /.htaccess
 /.jbrowse-ignore
 /config.bash
-/data/
-/doit*.out
-/doit[0-9][0-9][a-z].bash
-/packages.yaml
+HEADER.md
+data/
+doit*.out
+doit[0-9][0-9][a-z].bash

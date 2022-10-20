@@ -15,10 +15,10 @@ set +x
 
 # Stage the data
 cp --archive ../../local/annotation.gff fixme_genomic.gff
-mkdir bam
-cp --archive ../../test/xsample_metadata.xlsx .
-cp --archive ../../test/xbam .
-unpigz xbam/*.gz
+cp --archive ../../local/sample_metadata.xlsx .
+cp --archive ../../${BEDS} beds
+cp ../../local/fixme.tsv .
+#unpigz xbam/*.gz
 
 # Print the R version
 (
@@ -59,7 +59,7 @@ unpigz xbam/*.gz
 (
     set -x
     Rscript --vanilla ../../SorTn-seq/SorTnSeq_insertion_counts.R \
-	    fixme ../../local/fixme.tsv ../beds
+	    fixme fixme.tsv beds
 )
 
 # ------------------------------------------------------------------------
