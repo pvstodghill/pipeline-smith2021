@@ -30,7 +30,7 @@ for input_fq in ${FASTQ_FILES} ; do
 		    -threads ${THREADS} \
 		    -trimlog $trim_summary \
 		    $input_fq $output_fq \
-		    ILLUMINACLIP:inputs/TruSeq3-SE.fa:2:30:1
+		    ILLUMINACLIP:${PIPELINE}/inputs/TruSeq3-SE.fa:2:30:1
     )
 done
 
