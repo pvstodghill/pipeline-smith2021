@@ -15,7 +15,7 @@ echo 1>&2 "# Run fastqc"
 rm -rf ${FASTQC}
 mkdir -p ${FASTQC}
 
-fastqc -t ${THREADS} -o ${FASTQC} ${FASTQ_FILES}
+fastqc -t ${THREADS} -o ${FASTQC} ${INPUTS}/*.fastq.gz
 
 # ------------------------------------------------------------------------
 # Done.

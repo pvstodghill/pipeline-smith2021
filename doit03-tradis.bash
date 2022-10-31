@@ -17,7 +17,8 @@ mkdir -p ${TRADIS}
 #     dir *.fastq.gz >filelist.txt
 # ------------------------------------------------------------------------
 
-realpath --relative-to=${TRADIS} ${FASTQ_FILES} \
+# FIXME: should be ${TRIMMED}/*.fastq.gz
+realpath --relative-to=${TRADIS} ${INPUTS}/*.fastq.gz \
 	  > ${TRADIS}/filelist.txt
 
 # ------------------------------------------------------------------------
@@ -30,7 +31,7 @@ realpath --relative-to=${TRADIS} ${FASTQ_FILES} \
 # 
 # ------------------------------------------------------------------------
 
-cp --archive ${GENOME_FNA} ${TRADIS}/genome.fna
+cp --archive ${INPUTS}/genome.fna ${TRADIS}/genome.fna
 
 (
     set -x

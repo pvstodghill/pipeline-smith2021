@@ -15,10 +15,10 @@ PIPELINE=$(realpath --relative-to ${SORTNSEQ} ${PIPELINE})
 # ------------------------------------------------------------------------
 
 # Stage the data
-cp --archive ${GENOME_GFF} ${SORTNSEQ}/${PREFIX}_genomic.gff
+cp --archive ${INPUTS}/genome.gff ${SORTNSEQ}/${PREFIX}_genomic.gff
 #cp --archive .../sample_metadata.xlsx .
 cp --archive ${BEDS} ${SORTNSEQ}/beds
-cp ${SAMPLES_TSV} ${SORTNSEQ}/samples.tsv
+cp ${INPUTS}/samples.tsv ${SORTNSEQ}/samples.tsv
 
 # ------------------------------------------------------------------------
 
