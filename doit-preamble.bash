@@ -24,6 +24,8 @@ if [ -e /programs/parallel/bin/parallel ] ; then
     PARALLEL_CMD=/programs/parallel/bin/parallel
 fi
 
+# These vars are used in parameters to stubs/*, so they cannot be
+# `realpath`'ed.
 PIPELINE=$(dirname ${BASH_SOURCE[0]})
 # v-- can be specified externally
 DATA=${DATA:-data}
@@ -34,6 +36,7 @@ DATA=${DATA:-data}
 
 # ------------------------------------------------------------------------
 
+export HOWTO_MOUNT_DIR=$(realpath $(${PIPELINE}/howto/find-closest-ancester-dir . ${DATA} ${PIPELINE}))
 export HOWTO_TMPDIR=$(realpath ${DATA})/tmp
 
 if [ "$PACKAGES_FROM" = conda ] ; then
@@ -50,7 +53,7 @@ case X"$PACKAGES_FROM"X in
 
 	;;
     XX|XhowtoX|XstubsX)
-	export PATH=$(realpath $(dirname ${BASH_SOURCE[0]}))/stubs:"$PATH"
+	export PATH=$(realpath ${PIPELINE})/stubs:"$PATH"
 	;;
     XnativeX)
 	: nothing
@@ -92,6 +95,7 @@ export LC_ALL=C
 
 # ------------------------------------------------------------------------
 
+INPUTS=${DATA}/inputs
 FASTQC=${DATA}/fastqc
 TRIMMED=${DATA}/trimmed
 TRADIS=${DATA}/tradis
