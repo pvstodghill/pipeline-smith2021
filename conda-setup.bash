@@ -20,7 +20,6 @@ PACKAGES+=" r-readxl"
 PACKAGES+=" r-scales"
 PACKAGES+=" r-tidyverse"
 PACKAGES+=" r-writexl"
-PACKAGES+=" sra-tools"
 PACKAGES+=" trimmomatic"
 
 #_conda=conda
