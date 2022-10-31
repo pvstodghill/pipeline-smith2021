@@ -37,6 +37,7 @@ cp --archive ${INPUTS}/genome.fna ${TRADIS}/genome.fna
     set -x
     cd ${TRADIS}
     bacteria_tradis \
+	-n ${THREADS} \
 	--smalt \
 	--smalt_k 10 \
 	--smalt_s 1 \
