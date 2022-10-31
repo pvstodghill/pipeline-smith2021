@@ -1,0 +1,60 @@
+---
+image: pvstodghill/pipeline-smith2021
+version: 01__2022-10-21
+commands:
+  - Rscript
+  # - add_tradis_tags
+  # - bacteria_tradis
+  # - bedtools
+  # - check_tradis_tags
+  # - combine_tradis_plots
+  # - fastqc
+  # - filter_tradis_tags
+  # - remove_tradis_tags
+  # - tradis_comparison.R
+  # - tradis_essentiality.R
+  # - tradis_gene_insert_sites
+  # - tradis_merge_plots
+  # - tradis_plot
+  # - trimmomatic
+
+# https://sanger-pathogens.github.io/Bio-Tradis/
+---
+image: pvstodghill/biotradis
+version: 1.4.5__2022-10-21
+commands:
+  - add_tradis_tags
+  - bacteria_tradis
+  - check_tradis_tags
+  - combine_tradis_plots
+  - filter_tradis_tags
+  - remove_tradis_tags
+  - tradis_comparison.R
+  - tradis_essentiality.R
+  - tradis_gene_insert_sites
+  - tradis_merge_plots
+  - tradis_plot
+
+# https://bedtools.readthedocs.io/en/latest/
+---
+image: pvstodghill/bedtools
+version: 2.30.0__2022-10-21
+commands:
+  - bedtools
+
+# https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+---
+image: pvstodghill/fastqc
+version: 0.11.9__2020-01-09
+java: true
+commands:
+  - fastqc
+
+# http://www.usadellab.org/cms/?page=trimmomatic
+---
+image: pvstodghill/trimmomatic
+version: 0.39__2022-10-31
+java: true
+commands:
+  - trimmomatic
+
