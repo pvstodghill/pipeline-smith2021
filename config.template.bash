@@ -18,6 +18,11 @@ GENOME_GFF=local/genome.gff
 
 # ------------------------------------------------------------------------
 
+# if set, run trimmomatic with these args
+TRIMMOMATIC_ARGS="ILLUMINACLIP:${PIPELINE}/inputs/TruSeq3-SE.fa:2:30:1 MINLEN:36"
+
+# ------------------------------------------------------------------------
+
 # Uncomment to get packages from HOWTO
 PACKAGES_FROM=howto
 

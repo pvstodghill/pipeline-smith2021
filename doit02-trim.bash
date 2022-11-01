@@ -3,6 +3,13 @@
 . $(dirname ${BASH_SOURCE[0]})/doit-preamble.bash
 
 # ------------------------------------------------------------------------
+
+if [ -z "${TRIMMOMATIC_ARGS}" ] ; then
+    echo 1>&2 "# Skipping read trimming"
+    exit
+fi
+
+# ------------------------------------------------------------------------
 # 
 # 131. Trim the specified FASTQ file by using the following command
 # code on the command line. This generates a new file that has been
@@ -30,7 +37,7 @@ for input_fq in ${INPUTS}/*.fastq.gz ; do
 		    -threads ${THREADS} \
 		    -trimlog $trim_summary \
 		    $input_fq $output_fq \
-		    ILLUMINACLIP:${PIPELINE}/inputs/TruSeq3-SE.fa:2:30:1
+		    ${TRIMMOMATIC_ARGS}
     )
 done
 

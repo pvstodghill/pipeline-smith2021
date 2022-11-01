@@ -4,7 +4,16 @@
 
 # ------------------------------------------------------------------------
 
-echo 1>&2 "# Running TraDIS"
+echo 1>&2 "# Running TraDIS ..."
+
+if [ -d "${TRIMMED}" ] ; then
+    echo "# ... with trimmed reads."
+    DIR="${TRIMMED}"
+else
+    echo "# ... with raw reads."
+    DIR="${INPUTS}"
+fi
+
 
 rm -rf ${TRADIS}
 mkdir -p ${TRADIS}
@@ -18,7 +27,7 @@ mkdir -p ${TRADIS}
 # ------------------------------------------------------------------------
 
 # FIXME: should be ${TRIMMED}/*.fastq.gz
-realpath --relative-to=${TRADIS} ${INPUTS}/*.fastq.gz \
+realpath --relative-to=${TRADIS} ${DIR}/*.fastq.gz \
 	  > ${TRADIS}/filelist.txt
 
 # ------------------------------------------------------------------------
