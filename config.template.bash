@@ -1,5 +1,3 @@
-#! /bin/bash
-
 # directory into which the results are written.
 #DATA=.
 #DATA=data # default

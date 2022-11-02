@@ -22,8 +22,11 @@ PACKAGES+=" r-tidyverse"
 PACKAGES+=" r-writexl"
 PACKAGES+=" trimmomatic"
 
-#_conda=conda
-_conda=mamba
+if [ "$(type -p mamba)" ] ; then
+    _conda=mamba
+else
+    _conda=conda
+fi
 
 set -x
 

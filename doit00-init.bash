@@ -11,9 +11,15 @@ if [ -d ${DATA} ] ; then
     rm -rf ${DATA}
 fi
 
+# --------------------------------------------------
+
 echo 1>&2 "# Initializing ${DATA}/..."
-rm -rf ${DATA}/tmp ${INPUTS}
+rm -rf ${DATA}/tmp
 mkdir -p ${DATA}/tmp
+
+
+# --------------------------------------------------
+
 mkdir -p ${INPUTS}
 
 echo 1>&2 '# Making copies of raw reads...'
@@ -26,6 +32,15 @@ echo 1>&2 '# Making copies of genome sequence and annotation...'
 cp --archive ${GENOME_FNA} ${INPUTS}/genome.fna
 cp --archive ${GENOME_GFF} ${INPUTS}/genome.gff
 
+# --------------------------------------------------
+
+if [ "$PACKAGES_FROM" = howto ] ; then
+    echo 1>&2 '# Ensuring entries in packages.yaml are downloaded...'
+    (
+	set -x
+	${PIPELINE}/howto/howto -f ${PIPELINE}/packages.yaml -p '*'
+    )
+fi
 
 # ------------------------------------------------------------------------
 # Done.
